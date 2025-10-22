@@ -16,8 +16,8 @@ export function NutrientBadge({ variant = "vitamin", children, className }: Nutr
       className={cn(
         "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-medium whitespace-nowrap",
         variant === "iron" && "bg-beetroot text-beetroot-foreground",
-        variant === "vitamin" && "bg-transparent border border-lettuce text-foreground",
-        variant === "info" && "bg-beetroot/10 text-beetroot",
+        variant === "vitamin" && "bg-transparent border border-beetroot text-foreground",
+        variant === "info" && "bg-beetroot/15 text-beetroot border border-beetroot/30",
         className
       )}
     >

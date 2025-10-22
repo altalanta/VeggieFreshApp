@@ -76,7 +76,7 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-4xl px-4 py-6 space-y-6">
         <header className="space-y-2">
-          <h1 className="font-serif text-4xl font-semibold text-foreground tracking-tight">
+          <h1 className="font-serif text-4xl font-semibold tracking-tight bg-gradient-to-r from-beetroot to-primary bg-clip-text text-transparent">
             Today's Nutrition
           </h1>
           <p className="text-muted-foreground">
@@ -85,7 +85,7 @@ export default function Home() {
         </header>
 
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="flex items-center gap-2 text-sm font-medium text-beetroot">
             <Calendar className="h-4 w-4" />
             <span data-testid="text-current-date">
               {new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}
@@ -109,8 +109,8 @@ export default function Home() {
         ) : (
           <>
             <Card className="border-card-border">
-              <CardHeader>
-                <CardTitle className="font-serif text-2xl">Daily Progress</CardTitle>
+              <CardHeader className="border-b border-card-border bg-gradient-to-r from-beetroot/5 to-primary/5">
+                <CardTitle className="font-serif text-2xl text-beetroot">Daily Progress</CardTitle>
               </CardHeader>
               <CardContent className="space-y-5">
                 {dailyNutrients && dailyGoals && (
@@ -163,7 +163,7 @@ export default function Home() {
             </Card>
 
             <div className="space-y-4">
-              <h2 className="font-serif text-2xl font-semibold text-foreground">
+              <h2 className="font-serif text-2xl font-semibold text-beetroot">
                 Today's Meals
               </h2>
               {todaysMeals.length === 0 ? (

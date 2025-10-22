@@ -34,8 +34,8 @@ export function MealCard({ meal, onDelete }: MealCardProps) {
     <Card className="border-card-border hover-elevate overflow-visible">
       <CardHeader className="flex flex-row items-start justify-between gap-3 space-y-0 pb-3">
         <div className="flex items-start gap-3 min-w-0 flex-1">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
-            <Icon className="h-5 w-5 text-accent" />
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-beetroot/10">
+            <Icon className="h-5 w-5 text-beetroot" />
           </div>
           <div className="min-w-0 flex-1">
             <h3 className="font-serif text-lg font-semibold text-card-foreground leading-tight">

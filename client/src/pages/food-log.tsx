@@ -90,7 +90,7 @@ export default function FoodLog() {
         </div>
 
         <header className="space-y-2">
-          <h1 className="font-serif text-4xl font-semibold text-foreground tracking-tight">
+          <h1 className="font-serif text-4xl font-semibold tracking-tight bg-gradient-to-r from-beetroot to-primary bg-clip-text text-transparent">
             Food Log
           </h1>
           <p className="text-muted-foreground">
@@ -105,10 +105,10 @@ export default function FoodLog() {
         ) : (
           <>
             {dailyNutrients && (
-              <Card className="border-card-border bg-gradient-to-br from-card to-background" data-testid="card-daily-totals">
-                <CardHeader>
-                  <CardTitle className="font-serif text-2xl flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-primary" />
+              <Card className="border-card-border bg-gradient-to-br from-beetroot/5 to-primary/5" data-testid="card-daily-totals">
+                <CardHeader className="border-b border-card-border">
+                  <CardTitle className="font-serif text-2xl flex items-center gap-2 text-beetroot">
+                    <TrendingUp className="h-5 w-5 text-beetroot" />
                     Today's Totals
                   </CardTitle>
                 </CardHeader>
@@ -154,7 +154,7 @@ export default function FoodLog() {
               <div className="space-y-8">
                 {sortedDates.map((date) => (
                   <div key={date} className="space-y-3">
-                    <h2 className="font-serif text-xl font-semibold text-foreground sticky top-0 bg-background py-2 z-10">
+                    <h2 className="font-serif text-xl font-semibold text-beetroot sticky top-0 bg-background py-2 z-10 border-b border-beetroot/20">
                       {date}
                     </h2>
                     <div className="space-y-3">
