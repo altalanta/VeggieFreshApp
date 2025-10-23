@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Nutrition Rules Schema",
+  "type": "object",
+  "required": ["version", "nutrient_targets", "suggestion_policies"],
+  "properties": {
+    "version": { "type": "string" },
+
+    "nutrient_targets": {
+      "description": "Per-phase nutrient targets; values populated from literature (e.g., Lily Nichols).",
+      "type": "object",
+      "properties": {
+        "phases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "label", "applies_when", "targets"],
+            "properties": {
+              "id": { "type": "string", "enum": ["preconception","trimester1","trimester2","trimester3","interpregnancy","breastfeeding"] },
+              "label": { "type": "string" },
+              "applies_when": {
+                "type": "object",
+                "properties": {
+                  "weeks_gestation_min": { "type": "integer" },
+                  "weeks_gestation_max": { "type": "integer" }
+                }
+              },
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["nutrient_id","min","unit"],
+                  "properties": {
+                    "nutrient_id": { "type": "string" },
+                    "min": { "type": "number" },
+                    "max": { "type": ["number","null"] },
+                    "weekly_min": { "type": ["number","null"] },
+                    "unit": { "type": "string" },
+                    "source": { "type": "string", "description": "Reference/citation id" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "user_constraints": {
+      "type": "object",
+      "properties": {
+        "diet_type": { "type": "string", "enum": ["omnivore","vegetarian","vegan"] },
+        "allergies": { "type": "array", "items": { "type": "string" } },
+        "dislikes": { "type": "array", "items": { "type": "string" } },
+        "avoidants": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "suggestion_policies": {
+      "type": "object",
+      "required": ["gap_thresholds","sources","substitutions","supplement_rules"],
+      "properties": {
+        "gap_thresholds": {
+          "type": "object",
+          "properties": {
+            "daily": { "type": "number", "description": "e.g. suggest when <80% of daily min" },
+            "weekly": { "type": "number", "description": "e.g. <80% of weekly min" }
+          }
+        },
+        "sources": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["food","plant_alternative","supplement"] }
+        },
+        "substitutions": {
+          "type": "array",
+          "description": "Map nutrients → acceptable plant-based/alt sources.",
+          "items": {
+            "type": "object",
+            "required": ["nutrient_id","candidates"],
+            "properties": {
+              "nutrient_id": { "type": "string" },
+              "candidates": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["name","food_id_or_hint","amount_per_serving","unit","est_nutrient_amount"],
+                  "properties": {
+                    "name": { "type": "string" },
+                    "food_id_or_hint": { "type": "string" },
+                    "amount_per_serving": { "type": "number" },
+                    "unit": { "type": "string" },
+                    "est_nutrient_amount": { "type": "number" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "supplement_rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["nutrient_id","max_daily_suggested","unit","notes"],
+            "properties": {
+              "nutrient_id": { "type": "string" },
+              "max_daily_suggested": { "type": "number" },
+              "unit": { "type": "string" },
+              "notes": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
