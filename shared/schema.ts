@@ -9,6 +9,7 @@ export interface UserProfile {
   currentWeek?: number;
   currentTrimester?: 1 | 2 | 3;
   prePregnancyWeight?: number;
+  prePregnancyWeightUnit?: "kg" | "lbs";
   prePregnancyBMI?: number;
   height?: number;
   dietaryPreferences?: string[];
