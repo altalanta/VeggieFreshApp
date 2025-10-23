@@ -1,0 +1,80 @@
+version: "0.1.0"
+
+nutrient_targets:
+  phases:
+    - id: preconception
+      label: "Pre-conception"
+      applies_when: {}
+      targets:
+        - nutrient_id: protein
+          min: 75
+          max: null
+          unit: g
+          source: "Nichols-RFFP"
+        - nutrient_id: fiber
+          min: 28
+          max: null
+          unit: g
+          source: "Nichols-RFFP"
+        - nutrient_id: choline
+          weekly_min: 3150   # 450 mg/day * 7 as example placeholder; refine from text
+          unit: mg
+          source: "Nichols-RFFP"
+    - id: trimester1
+      label: "Trimester 1"
+      applies_when: { weeks_gestation_min: 0, weeks_gestation_max: 12 }
+      targets:
+        - nutrient_id: folate
+          min: 600
+          unit: mcg_DFE
+          source: "Nichols-RFFP"
+        - nutrient_id: DHA
+          weekly_min: 700   # placeholder weekly aggregation
+          unit: mg
+          source: "Nichols-RFFP"
+    - id: trimester2
+      label: "Trimester 2"
+      applies_when: { weeks_gestation_min: 13, weeks_gestation_max: 27 }
+      targets: []
+    - id: trimester3
+      label: "Trimester 3"
+      applies_when: { weeks_gestation_min: 28, weeks_gestation_max: 42 }
+      targets: []
+    - id: interpregnancy
+      label: "Interpregnancy"
+      applies_when: {}
+      targets: []
+    - id: breastfeeding
+      label: "Breastfeeding"
+      applies_when: {}
+      targets: []
+
+user_constraints:
+  diet_type: omnivore
+  allergies: []
+  dislikes: []
+  avoidants: []
+
+suggestion_policies:
+  gap_thresholds:
+    daily: 0.8
+    weekly: 0.8
+  sources: ["food","plant_alternative","supplement"]
+  substitutions:
+    - nutrient_id: DHA
+      candidates:
+        - name: "Algal oil softgel"
+          food_id_or_hint: "supplement:algal-oil"
+          amount_per_serving: 1
+          unit: "softgel"
+          est_nutrient_amount: 300
+        - name: "Ground flax + walnuts combo"
+          food_id_or_hint: "hint:flax+walnut"
+          amount_per_serving: 30
+          unit: g
+          est_nutrient_amount: 60
+  supplement_rules:
+    - nutrient_id: vitamin_a
+      max_daily_suggested: 3000
+      unit: mcg_RAE
+      notes: "Avoid exceeding UL; prefer food-based vitamin A. Use beta-carotene where appropriate."
