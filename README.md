@@ -1,88 +1,65 @@
-# VeggieFresh - Evidence-Based Pregnancy Nutrition App
+# VeggieFresh – Evidence-Based Pregnancy Nutrition
 
-A comprehensive nutrition tracking application meticulously designed for pregnancy, featuring an evidence-based onboarding flow, critical safety alerts, and trimester-specific guidance.
+VeggieFresh helps expectant parents log meals, monitor 40+ prenatal nutrients, and receive trimester-aware guidance rooted in current research (NIH, ACOG, WHO). The app emphasizes inclusion for plant-based pregnancies while protecting against the biggest nutrient safety risks.
 
-## ✨ Core Features
+## ✨ Highlights
 
-### PHASE 0: Initial User Setup Flow
-- **Comprehensive Onboarding**: Collects Last Menstrual Period (LMP), weight, height, dietary preferences, allergies, medical history, and current supplement intake.
-- **Gestational Age Calculation**: Automatically calculates and displays the current week and trimester.
-- **Privacy-Focused BMI**: Calculates starting BMI for internal logic but only displays the category (e.g., "Normal Weight") to the user.
-- **Plant-Based Support**: Provides an informational modal for users selecting vegetarian or vegan diets.
-- **Folate Education**: A prominent note in the supplement section educates users on the critical difference between natural Folate and synthetic Folic Acid.
+- **Guided Onboarding:** Collects LMP, calculates gestational age, captures weight/height (with BMI category only), dietary preferences, allergies, medical history, and supplement details. Includes methylfolate vs. folic acid education and plant-based considerations up front.
+- **Daily-First Tracking:** All nutrients – including Vitamin D, B12, Choline, DHA/EPA, magnesium, vitamin K, etc. – are tracked daily with dynamic defaults and upper limits. The UI focuses on a single “Daily Nutrition” view; a weekly average summary sits below.
+- **Trimester-Aware Goals:** Calorie and protein targets auto-adjust using BMI, trimester, and baseline energy needs. Users see explanatory copy (“Second trimester: +340 kcal/day”) plus food ideas.
+- **Plant-Based Mode:** Vegan/vegetarian users get a badge, a “Plant-Based Pregnancy Check” card for B12/iron/zinc/choline/DHA/calcium/iodine, vegan-friendly nudges (e.g., algae-based DHA), and filtered food suggestions tied to preferences/allergies.
+- **Safety Systems:** Separate tracking for preformed vitamin A vs. beta-carotene, synthetic vs. natural folate, iron UL tiers, and iron–calcium timing interactions. Alerts escalate from gentle to critical (toast, card, modal) with actionable guidance.
+- **Gentle First Trimester Experience:** Encouraging nudges, neutral color language, reassurance copy when intake is low, and celebration messages when anything is logged—while still surfacing high-risk alerts instantly.
+- **Weekly Symptom Check-ins:** Nausea/fatigue/aversions plus symptom-specific tips (magnesium for cramps, fiber + hydration for constipation). Severe nausea + <50% intake triggers compassionate reassurance.
 
-### PHASE 1: Critical Safety Features
-- **Vitamin A Teratogenicity Alert System**: Tracks preformed Vitamin A (retinol) separately from safe Beta-carotene, triggering critical alerts at levels known to increase birth defect risks.
-- **Iron Management System**: Monitors total daily iron intake with warnings for approaching or exceeding the Tolerable Upper Intake Level (UL) to mitigate risks like constipation and gestational diabetes.
-- **Iron-Calcium Interaction Detection**: Alerts users when iron and calcium are consumed within a 2-hour window, explaining the significant reduction in iron absorption and recommending proper spacing.
-- **Folic Acid Upper Limit Monitoring**: Tracks synthetic folic acid separately from natural food folate, with warnings for exceeding 1,000mcg to prevent masking a Vitamin B12 deficiency.
+## 🛠 Tech Stack
 
-### PHASE 2 & 3: Comprehensive Daily Nutrient Tracking
-- **All Nutrients Tracked Daily**: Removed the confusing "Weekly Targets" tab and moved all nutrients, including Vitamin D, B12, Choline, and DHA/EPA, to a unified daily view.
-- **10+ New Critical Nutrients**: Added daily tracking for Magnesium, Vitamin E, Vitamin K, Copper, Biotin (B7), Pantothenic Acid (B5), Manganese, Chromium, and Molybdenum.
-- **Magnesium Educational Note**: A detailed, evidence-based note in the intake form highlights magnesium's role in preventing preeclampsia and leg cramps, its high deficiency rate, and best food sources.
-
-### PHASE 4: BMI-Adjusted Calorie & Protein Recommendations
-- **Trimester-Specific Goals**: Calorie and protein goals dynamically adjust based on the user's starting BMI and current trimester. (Note: Calorie adjustments are pending final implementation).
-
-### PHASE 5: Gentle First Trimester Nudging
-- **First Trimester Mode**: Replaces standard "nudges" with gentle, encouraging messages focused on rest and self-care, acknowledging the challenges of early pregnancy.
-
-### PHASE 6: Weekly Symptom Check-in System
-- **Symptom Logging**: Allows users to log common pregnancy symptoms like nausea, fatigue, and food aversions weekly.
-- **Symptom-Responsive Guidance**: Provides immediate, actionable advice based on logged symptoms (e.g., tips for managing nausea, constipation, or leg cramps).
-- **Nausea + Low Nutrition Reassurance**: A specialized alert provides comfort and evidence-based reassurance to users experiencing significant nausea coupled with low nutritional intake, emphasizing that this is normal and the baby is still getting nutrients from maternal stores.
-
-### PHASE 7: Enhanced Educational Content
-- **Folate vs. Folic Acid Education**: A dialog explains the differences, the importance of methylfolate, and lists high-folate foods.
-- **Plant-Based Pregnancy Enhanced Mode**: Activates a "Plant-Based Mode" badge and a dedicated "Key Plant-Based Nutrients" section for users who identify as vegetarian or vegan.
-- **Food Suggestion Engine**: Dynamically suggests high-nutrient foods based on the user's current deficits and dietary preferences.
-
-### PHASE 8: UI/UX Enhancements
-- **Three-Tiered Visual Alert System**: Nutrient progress bars change color (Green for optimal, Yellow for approaching goal, Orange for exceeding goal, Red for dangerous levels) to provide instant visual feedback.
-- **Gestational Age Context**: The user's current week and trimester are displayed prominently in the header for constant context.
+- **Frontend:** React + TypeScript, Vite, Tailwind (custom VeggieFresh theme), React Query.
+- **Backend:** Node/Express with Drizzle ORM and Neon/Postgres storage.
+- **Shared Layer:** Type-safe schema definitions and default nutrient goals exported for both client and server.
 
 ## 🚀 Getting Started
 
-### Prerequisites
-- Node.js (v18 or higher)
-- npm (v8 or higher)
-- PostgreSQL (for database)
-
-### Installation & Setup
-
-1.  **Clone the repository:**
-    ```bash
-    git clone <your-repo-url>
-    cd VeggieFresh
-    ```
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-3.  **Set up your environment variables:**
-    Create a `.env` file in the `server` directory and add your PostgreSQL database URL:
-    ```
-    DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
-    ```
-4.  **Start the development server:**
-    ```bash
-    npm run dev
-    ```
-5.  **Open your browser:**
-    Navigate to `http://localhost:3000`.
-
-## 🛠 Development Commands
 ```bash
-# Start development server
+git clone <repo>
+cd VeggieFresh
+npm install
 npm run dev
-
-# Build for production
-npm run build
-
-# Run linting
-npm run lint
-
-# Run type checking
-npm run typecheck
 ```
+
+Set `DATABASE_URL` in `server/.env` (Neon/Postgres). The dev server hosts both API and SPA via Vite.
+
+## 🧭 Feature Tour
+
+| Area | What you’ll see |
+| --- | --- |
+| **Onboarding** | Six steps (LMP calendar, measurements with BMI-only UI, dietary prefs with modal, allergies, medical history, supplements). Displays trimester-specific calorie/protein guidance when enough data exists. |
+| **Home Header** | Personalized calorie/protein goal breakdown (“Baseline vs. Trimester Goal”), trimester badges, due-date context, Plant-Based badge when applicable. |
+| **Daily Nutrition** | Progress bars with goal + UL markers (color-coded 3-tier alert system), grouped sections (macros, micros, B-complex, trace minerals, specialized). Plant-based users get a highlighted nutrient section. |
+| **Weekly Average** | Compact card summarizing 7-day averages for key nutrients (calories, iron, calcium, choline, vitamin D, DHA, etc.). |
+| **Nudges & Suggestions** | Trend-based suggestions, plant-based alerts (B12, iron absorption, choline), gentle messages during trimester 1, plus food suggestions filtered by preferences/allergies. |
+| **Logging Intake** | Detailed nutrient form covering macros, micros, folate forms, vitamin A forms, magnesium, trace minerals, DHA/EPA. Includes magnesium education block. |
+| **Symptom Check-ins** | Weekly dialog capturing nausea/fatigue/aversions/constipation/heartburn/cramps/headaches/cravings with targeted follow-ups (e.g., B6 for nausea, magnesium for cramps). |
+
+## ✅ Safety Rails
+
+- Red alert >10,000 IU preformed vitamin A; orange warning ≥8,000 IU in trimester 1.
+- Synthetic folic acid UL at 1,000 mcg (with 4,000 mcg exemption for previous NTD flag).
+- Iron UL warnings (yellow 40–44 mg, orange ≥45 mg) + every-other-day tip.
+- Automatic detection of iron + calcium within a 2-hour window (explains absorption drop, suggests spacing & vitamin C).
+- Alert history stored for audit trails (via `alert_history` table).
+
+## 📈 Roadmap Snippets
+
+- Extend gentle-first-trimester mode with optional pacing settings.
+- Integrate actual authentication and user seats (currently using placeholder ID).
+- Expand food database seeding + barcode search (endpoints already scaffolded).
+
+## 🤝 Contributing
+
+1. Fork / branch from `main`.
+2. Keep TypeScript strictness & linting in mind.
+3. Use `rg` for search, `apply_patch` for succinct edits.
+4. Submit PRs with context around nutrition logic changes (cite research when possible).
+
+VeggieFresh aims to remove fear and confusion from pregnancy nutrition—especially for plant-based parents—while surfacing real risks with empathy. Dive in, explore the personalized flows, and help us keep building an evidence-backed companion for the prenatal journey. 🌱💛
