@@ -98,3 +98,4 @@ Pregnant and TTC women need actionable, phase-aware nutrition tracking with mini
 - Which commercial barcode DB to add after MVP?
 - Clinician review panel needed for claim vetting?
 - Region-based target variants?
+
