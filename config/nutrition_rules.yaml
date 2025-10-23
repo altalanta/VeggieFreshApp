@@ -78,3 +78,4 @@ suggestion_policies:
       max_daily_suggested: 3000
       unit: mcg_RAE
       notes: "Avoid exceeding UL; prefer food-based vitamin A. Use beta-carotene where appropriate."
+

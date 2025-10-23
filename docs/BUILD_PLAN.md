@@ -84,3 +84,4 @@ Indices: users(auth_sub), foods(barcode), intake_entries(user_id,date_time), mea
 - **M2 (Capture breadth)**: Barcode + OCR + AI Describe stabilized.
 - **M3 (Phase-aware coaching)**: Trimester/breastfeeding programs, refined suggestions.
 - **M4 (Polish + perf)**: Animations, caching, offline cues, app hardening.
+
